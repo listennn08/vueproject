@@ -33,24 +33,15 @@ export const mutations = {
     }
   },
   [types.TOGGLE_TODO] (state, key) {
-    for (let i in state.todos) {
-      let item = state.todos[i];
-      if (item.key === key) {
-        item.done = !item.done;
-        console.log('TOGGLE_TODO:', item.content, 'done?', item.done);
-        break;
-      }
-    }
+    let item = state.todos[key];
+    console.log(item.done)
+    item.done = !item.done;
+    console.log('TOGGLE_TODO:', item.content, 'done?', item.done);
   },
   [types.DELETE_TODO] (state, key) {
-    for (let i in state.todos) {
-      let item = state.todos[i];
-      if (item.key === key) {
-        console.log('DELETE_TODO:', item.content, ', index?', i);
-        state.todos.splice(i, 1);
-        break;
-      }
-    }
+    let item = state.todos[key];
+    console.log('DELETE_TODO:', item.content, ', index?', key);
+    state.todos.splice(key, 1);
   },
   [types.UPDATE_TODO] (state, obj) {
     for (let i in state.todos) {

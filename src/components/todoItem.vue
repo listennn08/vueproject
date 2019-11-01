@@ -12,6 +12,9 @@
         <button class="btn btn-xs btn-primary" @click="showEditMode">
           <font-awesome-icon icon="pencil-alt" />
         </button>
+        <button class="btn btn-xs btn-danger" @click="deleteTodo( item.key )">
+            <font-awesome-icon icon="trash"/>
+          </button>
       </div>
       <div v-if="updateMode">
         <input
