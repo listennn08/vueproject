@@ -18,6 +18,7 @@
     <router-link :to="{name: 'learnComponent'}" >Component</router-link>
     <router-link :to="{name: 'count'}">Count</router-link>
     <router-link :to="{name: 'todo'}">Todo</router-link>
+    <router-link :to="{name: 'countdown'}">CountDown</router-link>
     <!-- 轉跳後所載入的 component 最後會顯示在此 -->
     <router-view></router-view>
 

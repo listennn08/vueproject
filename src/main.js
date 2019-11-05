@@ -12,6 +12,7 @@ import learnComponent from './pages/learnComponent.vue';
 import App from './App.vue';
 import Count from './pages/count.vue'
 import Todo from './pages/todo.vue'
+import CountDown from './pages/countdown.vue'
 import store from './store'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { library } from  '@fortawesome/fontawesome-svg-core'
@@ -55,6 +56,11 @@ const router = new VueRouter({
       path: '/todo',
       name: 'todo',
       component: Todo
+    },
+    {
+      path: '/countdown',
+      name: 'countdown',
+      component: CountDown
     },
     // router 轉址
     { path: '/*', redirect: '/hello' }
