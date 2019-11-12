@@ -5,6 +5,7 @@
       </div>
       <button class="col-md-3 bnt-lg btn-primary" @click="start"> Start </button>
       <button class="col-md-3 bnt-lg btn-danger" @click="reset"> Reset </button>
+
       <audio id="audio" src="../static/bell.wav"></audio>
   </div>
 </template>
@@ -63,13 +64,15 @@ export default {
 </script>
 <style>
 .container-fluid {
-  margin: 20% 30%;
-
+  position: fixed;
+  top: 40%;
+  left: 25%;
+  width: 100%;
 }
 #countdown {
-  width: 100vw;
   text-align: center;
   font-size: 80px;
+
 }
 
 #audio {
