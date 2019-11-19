@@ -4,7 +4,7 @@
     <input id="toggleTemperature" type="checkbox" v-model="isCelsius" />
     <label for="toggleTemperature">切換: {{ toggleTemperature }}</label>
 
-    <h2 v-if="isCelsius">華氏： {{ celsius }} ℃ </h2>
+    <h2 v-if="isCelsius">攝氏： {{ celsius }} ℃ </h2>
     <h2 v-if="!isCelsius">華氏： {{ fahrenheit }} ℉</h2>
 
     <div class="celsius">
