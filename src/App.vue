@@ -13,14 +13,39 @@
         component: Hello
       },
     -->
-    <router-link :to="{path: '/hello'}">Hello</router-link>
-    <router-link :to="{name: 'c2f'}">CtoF</router-link>
-    <router-link :to="{name: 'learnComponent'}" >Component</router-link>
-    <router-link :to="{name: 'count'}">Count</router-link>
-    <router-link :to="{name: 'todo'}">Todo</router-link>
-    <router-link :to="{name: 'countdown'}">CountDown</router-link>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a href="#" class="navbar-brand">Vue</a>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <router-link :to="{path: '/hello'}">Hello</router-link>
+        </li>
+        <li class="nav-item active">
+          <router-link :to="{name: 'c2f'}">CtoF</router-link>
+        </li>
+        <li class="nav-item active">
+          <router-link :to="{name: 'learnComponent'}" >Component</router-link>
+        </li>
+        <li class="nav-item active">
+          <router-link :to="{name: 'count'}">Count</router-link>
+        </li>
+        <li class="nav-item active">
+          <router-link :to="{name: 'todo'}">Todo</router-link>
+        </li>
+        <li class="nav-item active">
+          <router-link :to="{name: 'countdown'}">CountDown</router-link>
+        </li>
+      </ul>
+    </nav>
+
     <!-- 轉跳後所載入的 component 最後會顯示在此 -->
     <router-view></router-view>
 
   </div>
 </template>
+<style>
+  nav ul li{
+    display: inline;
+    margin: 5px;
+    padding: 2px;
+  }
+</style>

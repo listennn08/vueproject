@@ -2,6 +2,15 @@
   <div>
     <li>
       <div v-if="!updateMode">
+        <customCheckbox :item="item" @toggleTodo="toggleTodo"/>
+          <button class="btn btn-xs btn-primary" @click="showEditMode">
+            <font-awesome-icon icon="pencil-alt" />
+          </button>
+          <button class="btn btn-xs btn-danger" @click="deleteTodo(item.key)">
+            <font-awesome-icon icon="trash"/>
+          </button>
+      </div>
+      <!-- <div v-if="!updateMode">
         <label>
           <input
             type="checkbox"
@@ -15,7 +24,7 @@
         <button class="btn btn-xs btn-danger" @click="deleteTodo( item.key )">
             <font-awesome-icon icon="trash"/>
           </button>
-      </div>
+      </div> -->
       <div v-if="updateMode">
         <input
           class="edit-input"
@@ -32,7 +41,11 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import customCheckbox from './customCheckbox.vue';
 export default {
+  components: {
+    customCheckbox
+  },
   props: {
     item: Object
   },

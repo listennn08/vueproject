@@ -15,8 +15,8 @@ export default {
     return {
       count: {
         idx: 1,
-        mm: '06',
-        ss: '01',
+        mm: '08',
+        ss: '00',
       },
       time: null,
     }
@@ -48,8 +48,8 @@ export default {
       this.Timer();
     },
     reset () {
-      this.count.mm = '06';
-      this.count.ss = '01';
+      this.count.mm = '08';
+      this.count.ss = '00';
       document.getElementById('countdown').className = 'col-md-6 alert-success'
       if (this.time) {
         clearInterval(this.time);

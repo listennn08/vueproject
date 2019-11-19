@@ -32,11 +32,15 @@ export const mutations = {
       todoKey++;
     }
   },
-  [types.TOGGLE_TODO] (state, key) {
-    let item = state.todos[key];
-    console.log(item.done)
-    item.done = !item.done;
-    console.log('TOGGLE_TODO:', item.content, 'done?', item.done);
+  [types.TOGGLE_TODO] (state, obj) {
+    for (let i in state.todos) {
+      let item = state.todos[i];
+      if (item.key === obj.key) {
+        item.done = obj.checked;
+        console.log('TOGGLE_TODO:', item.content, '| obj.checked?', obj.checked, '| done?', item.done);
+        break;
+      }
+    }
   },
   [types.DELETE_TODO] (state, key) {
     let item = state.todos[key];
