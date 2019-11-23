@@ -3,8 +3,8 @@
       <div id="countdown" class="col-md-6 alert-success" v-bind="count" :key="count.idx">
         {{ count.mm }} : {{ count.ss }}
       </div>
-      <button class="col-md-3 bnt-lg btn-primary" @click="start"> Start </button>
-      <button class="col-md-3 bnt-lg btn-danger" @click="reset"> Reset </button>
+      <button class="col-md-3 btn btn-lg btn-outline-primary" @click="start"> Start </button>
+      <button class="col-md-3 btn btn-lg btn-outline-danger" @click="reset"> Reset </button>
 
       <audio id="audio" src="../static/bell.wav"></audio>
   </div>

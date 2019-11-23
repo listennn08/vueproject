@@ -13,7 +13,7 @@
         component: Hello
       },
     -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light">
     <a href="#" class="navbar-brand">Vue</a>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
@@ -34,6 +34,9 @@
         <li class="nav-item active">
           <router-link :to="{name: 'countdown'}">CountDown</router-link>
         </li>
+        <li class="nav-item active">
+          <router-link :to="{name: 'Taiwan'}">Taiwan</router-link>
+        </li>
       </ul>
     </nav>
 
@@ -42,6 +45,9 @@
 
   </div>
 </template>
+<style lang="scss">
+  @import '~bootstrap/scss/bootstrap.scss';
+</style>
 <style>
   nav ul li{
     display: inline;

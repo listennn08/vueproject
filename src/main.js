@@ -1,9 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 // init
 Vue.use(VueRouter)
 Vue.use(Vuex)
+Vue.use(VueAxios, axios)
 
 // page
 import Hello from './pages/Hello.vue';
@@ -13,8 +16,9 @@ import App from './App.vue';
 import Count from './pages/count.vue'
 import Todo from './pages/todo.vue'
 import CountDown from './pages/countdown.vue'
+import Taiwan from './pages/Taiwan.vue'
 import store from './store'
-import 'bootstrap/dist/css/bootstrap.min.css'
+// import 'bootstrap/dist/css/bootstrap.min.css'
 import { library } from  '@fortawesome/fontawesome-svg-core'
 import { faCoffee, faPlus, faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons'
 // import { faGooglePlus } from '@fortawesome/free-brands-svg-icons'
@@ -61,6 +65,11 @@ const router = new VueRouter({
       path: '/countdown',
       name: 'countdown',
       component: CountDown
+    },
+    {
+      path: '/Taiwan',
+      name: 'Taiwan',
+      component: Taiwan
     },
     // router 轉址
     { path: '/*', redirect: '/hello' }
