@@ -14,7 +14,7 @@
       },
     -->
   <nav class="navbar navbar-expand-lg navbar-light">
-    <a href="#" class="navbar-brand">Vue</a>
+    <a href="#" class="navbar-brand">Matt</a>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <router-link :to="{path: '/hello'}">Hello</router-link>

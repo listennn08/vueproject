@@ -33,7 +33,7 @@ export default {
         if (this.count.ss < 10) {
            this.count.ss = '0' + this.count.ss;
          }
-        if ( +this.count.mm <= 6 && +this.count.ss == 0) {
+        if ( +this.count.mm == 6 && +this.count.ss == 0) {
           document.getElementById('countdown').className = 'col-md-6 alert-warning'
           this.playAudio();
         }
