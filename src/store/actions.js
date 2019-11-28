@@ -29,3 +29,12 @@ export const updateTodo = ({ commit }, obj) => {
   console.log('updateTodo', obj);
   commit(types.UPDATE_TODO, obj);
 }
+
+export const resetCount = ({ commit }) => {
+  commit(types.RESET_COUNTDOWN);
+  document.getElementById('countdown').className = 'col-md-6 alert-success'
+}
+
+export const startCount = ({ commit }) => {
+  commit(types.START_COUNTDOWN)
+}

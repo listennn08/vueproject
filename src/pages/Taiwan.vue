@@ -56,9 +56,10 @@ export default {
                   .enter().append('path')
                   .attr('d', path)
                   .attr('id', d => 'city' + d.properties.COUNTYCODE)
-                  .on('click', (d) => {
+                  .on('focus', (d) => {
                     this.h1 = d.properties.COUNTYNAME;
                     this.h2 = d.properties.COUNTYENG;
+                    console.log(d.properties.COUNTYCODE)
                     if (document.querySelector('.mapActive')) {
                       document.querySelector('.mapActive').classList.remove('mapActive');
                     }
@@ -105,9 +106,14 @@ body {
   align-items: center;
   width: 100%;
   height: 100%;
+  outline: none;
 }
 #map svg {
   max-height: 100vh;
+  outline: none;
+}
+#map path:focus {
+  outline: none;
 }
 #map path {
   fill: transparent;
