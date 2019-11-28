@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
       <div id="countdown" class="col-md-6 alert-success">
-        {{ mm }} : {{ ss }}
+        {{ count.mm }} : {{ count.ss }}
       </div>
       <button class="col-md-3 btn btn-lg btn-outline-primary" @click="start"> Start </button>
       <button class="col-md-3 btn btn-lg btn-outline-danger" @click="resetCountdown"> Reset </button>
@@ -14,17 +14,10 @@ import { mapGetters, mapActions} from 'vuex'
 export default {
   computed: {
     ...mapGetters({
-      mm: 'getCountdownmm',
-      ss: 'getCountdownss',
+      // mm: 'getCountdownmm',
+      // ss: 'getCountdownss',
+      count: 'getCountA'
     }),
-    time: {
-      get () {
-        this.$store.state.countdown.time;
-      },
-      set () {
-        this.$store.state.countdown.time =
-      }
-    }
   },
   methods: {
     

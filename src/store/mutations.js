@@ -63,12 +63,6 @@ export const mutations = {
       }
     }
   },
-  // [types.TIMER](state) {
-
-  // },
-  // [types.COUNTDOWN_SS] (state, num) {
-  //   state.countdown.ss = num--
-  // }
   [types.COUNTDOWN_START] (state) {
     // state.countdown.time = setInterval(() => {
       if (+state.countdown.ss == 0) {

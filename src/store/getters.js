@@ -8,4 +8,5 @@ export const getDone = state => {
 export const getCountdownmm = state => state.countdown.mm ;
 export const getCountdownss = state => state.countdown.ss ;
 export const getCountdownTime = state => state.countdown.time;
+export const getCountA = state => state.countdown
 
