@@ -6,7 +6,7 @@
       <div class="input-group col-md-4">
         <input
           type="text"
-          placeholder="add Toto.."
+          placeholder="add Todo.."
           v-model="newTodo"
           @keyup.enter="actionAddTodo" />
           <span class="input-group-btn">
