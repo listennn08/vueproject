@@ -1,22 +1,30 @@
 <template>
   <div class="container-fluid">
       <div id="countdown" class="col-md-6 alert-success">
+<<<<<<< HEAD
         {{ mm }} : {{ ss }}
       </div>
       <button class="col-md-3 btn btn-lg btn-outline-primary" @click="start()"> Start </button>
       <button class="col-md-3 btn btn-lg btn-outline-danger" @click="reset()"> Reset </button>
+=======
+        {{ count.mm }} : {{ count.ss }}
+      </div>
+      <button class="col-md-3 btn btn-lg btn-outline-primary" @click="start"> Start </button>
+      <button class="col-md-3 btn btn-lg btn-outline-danger" @click="resetCountdown"> Reset </button>
+>>>>>>> b3d935a3d567701eca7861e5f4a1b18758c18c57
 
       <audio id="audio" src="../static/bell.wav"></audio>
   </div>
 </template>
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions} from 'vuex'
 export default {
-  data () {
-    return {
-      // count: {idx: 1, mm: '08', ss: '00', },
-      // time: null,
-    }
+  computed: {
+    ...mapGetters({
+      // mm: 'getCountdownmm',
+      // ss: 'getCountdownss',
+      count: 'getCountA'
+    }),
   },
   computed: mapGetters({
       mm: 'getCountMinute',
@@ -33,6 +41,7 @@ export default {
       // }
   }),
   methods: {
+<<<<<<< HEAD
     ...mapActions({
       reset: 'resetCount',
       start: 'startCount'
@@ -48,9 +57,20 @@ export default {
     //     clearInterval(this.time);
     //   }
     // },
+=======
+
+    start () {
+      setInterval(this.startCountdown, 1000)
+    },
+
+>>>>>>> b3d935a3d567701eca7861e5f4a1b18758c18c57
     playAudio() {
       document.getElementById('audio').play();
-    }
+    },
+    ...mapActions([
+      'resetCountdown'
+    ]),
+    ...mapActions({startCountdown:'startCountdown',})
   }
 
 }

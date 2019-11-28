@@ -11,10 +11,18 @@ export const state = {
 	  { key: 3, content: 'vue-resource 2.0', done: false },
 	  { key: 4, content: 'webpack', done: false }
   ],
+<<<<<<< HEAD
   countdown:{
     mm: '08',
     ss: '00',
     Timer: null,
+=======
+  countdown: {
+    idx: 1,
+    mm: '08',
+    ss: '00',
+    time: null,
+>>>>>>> b3d935a3d567701eca7861e5f4a1b18758c18c57
   },
 }
 

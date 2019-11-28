@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import mutations from './mutations'
 import * as types from './mutations_type'
-import { type } from 'os';
+import { type, cpus } from 'os';
 
 export const actionIncrease = ({ commit }) => {
   // console.log('actionIncrease');
