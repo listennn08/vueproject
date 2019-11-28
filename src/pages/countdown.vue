@@ -1,63 +1,44 @@
 <template>
   <div class="container-fluid">
-      <div id="countdown" class="col-md-6 alert-success" v-bind="count" :key="count.idx">
-        {{ count.mm }} : {{ count.ss }}
+      <div id="countdown" class="col-md-6 alert-success">
+        {{ mm }} : {{ ss }}
       </div>
       <button class="col-md-3 btn btn-lg btn-outline-primary" @click="start"> Start </button>
-      <button class="col-md-3 btn btn-lg btn-outline-danger" @click="reset"> Reset </button>
+      <button class="col-md-3 btn btn-lg btn-outline-danger" @click="resetCountdown"> Reset </button>
 
       <audio id="audio" src="../static/bell.wav"></audio>
   </div>
 </template>
 <script>
+import { mapGetters, mapActions} from 'vuex'
 export default {
-  data () {
-    return {
-      count: {
-        idx: 1,
-        mm: '08',
-        ss: '00',
+  computed: {
+    ...mapGetters({
+      mm: 'getCountdownmm',
+      ss: 'getCountdownss',
+    }),
+    time: {
+      get () {
+        this.$store.state.countdown.time;
       },
-      time: null,
+      set () {
+        this.$store.state.countdown.time =
+      }
     }
   },
   methods: {
-    Timer () {
-      this.time = setInterval( () => {
-        if (+this.count.ss == 0) {
-          this.count.mm = '0' + --this.count.mm;
-          this.count.ss = 59;
-        } else {
-          this.count.ss--;
-        }
-        if (this.count.ss < 10) {
-           this.count.ss = '0' + this.count.ss;
-         }
-        if ( +this.count.mm == 6 && +this.count.ss == 0) {
-          document.getElementById('countdown').className = 'col-md-6 alert-warning'
-          this.playAudio();
-        }
-        if (+this.count.mm == 0 && +this.count.ss == 0) {
-          document.getElementById('countdown').className = 'col-md-6 alert-danger'
-          clearInterval(this.time);
-          this.playAudio();
-        }
-      }, 1000);
-    },
+    
     start () {
-      this.Timer();
+      setInterval(this.startCountdown, 1000)
     },
-    reset () {
-      this.count.mm = '08';
-      this.count.ss = '00';
-      document.getElementById('countdown').className = 'col-md-6 alert-success'
-      if (this.time) {
-        clearInterval(this.time);
-      }
-    },
+    
     playAudio() {
       document.getElementById('audio').play();
-    }
+    },
+    ...mapActions([
+      'resetCountdown'
+    ]),
+    ...mapActions({startCountdown:'startCountdown',})
   }
 
 }

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import mutations from './mutations'
 import * as types from './mutations_type'
-import { type } from 'os';
+import { type, cpus } from 'os';
 
 export const actionIncrease = ({ commit }) => {
   // console.log('actionIncrease');
@@ -29,3 +29,13 @@ export const updateTodo = ({ commit }, obj) => {
   console.log('updateTodo', obj);
   commit(types.UPDATE_TODO, obj);
 }
+
+export const startCountdown = ({ commit }) => {
+  commit(types.COUNTDOWN_START);
+}
+
+export const resetCountdown = ({ commit }) => {
+  commit(types.COUNTDOWN_RESET);
+}
+
+

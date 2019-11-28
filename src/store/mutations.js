@@ -11,6 +11,12 @@ export const state = {
 	  { key: 3, content: 'vue-resource 2.0', done: false },
 	  { key: 4, content: 'webpack', done: false }
   ],
+  countdown: {
+    idx: 1,
+    mm: '08',
+    ss: '00',
+    time: null,
+  },
 }
 
 let todoKey = state.todos.length;
@@ -56,6 +62,50 @@ export const mutations = {
         break;
       }
     }
+  },
+  // [types.TIMER](state) {
+
+  // },
+  // [types.COUNTDOWN_SS] (state, num) {
+  //   state.countdown.ss = num--
+  // }
+  [types.COUNTDOWN_START] (state) {
+    // state.countdown.time = setInterval(() => {
+      if (+state.countdown.ss == 0) {
+        state.countdown.mm = '0' + --state.countdown.mm;
+        state.countdown.ss = 59;
+      } else {
+        state.countdown.ss--;
+      }
+      if (state.countdown.ss < 10) {
+        state.countdown.ss = '0' + state.countdown.ss;
+      }
+      if (+state.countdown.mm == 6 && +state.countdown.ss == 0) {
+        document
+          .getElementById('countdown')
+          .className = 'col-md-6 alert-warning'
+          document
+          .getElementById('audio')
+          .play();
+      }
+      if (+state.countdown.mm == 0 && +state.countdown.ss == 0) {
+        document
+          .getElementById('countdown')
+          .className = 'col-md-6 alert-danger'
+        clearInterval(state.countdown.time);
+        document
+          .getElementById('audio')
+          .play();
+      }
+    // }, 1000);
+  },
+  [types.COUNTDOWN_RESET] (state) {
+      state.countdown.mm = '08';
+      state.countdown.ss = '00';
+      document.getElementById('countdown').className = 'col-md-6 alert-success'
+      if (state.countdown.time) {
+        clearInterval(state.countdown.time);
+      }
   }
 
 }
