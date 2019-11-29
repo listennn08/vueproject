@@ -2,6 +2,7 @@
   <div class="row mt-5">
     <div class="col-md-6 offset-md-3">
       <div class="hello">
+          <img src="@/assets/logo.png" alt="">
           <h1>{{ msg }}</h1>
           <h2>{{ hello }}</h2>
           <h2>{{ hello + 'Vue Project!!'}}</h2>
