@@ -6,3 +6,4 @@ export const DELETE_TODO = 'DELETE_TODO';
 export const UPDATE_TODO = 'UPDATE_TODO';
 export const START_COUNTDOWN = 'START_COUNTDOWN';
 export const RESET_COUNTDOWN = 'RESET_COUNTDOWN';
+export const UPDATE_TIMER = 'UPDATE_TIMER'

@@ -38,3 +38,7 @@ export const resetCount = ({ commit }) => {
 export const startCount = ({ commit }) => {
   commit(types.START_COUNTDOWN)
 }
+
+export const updateTimer = ({ commit }, val) => {
+  commit(types.UPDATE_TIMER, val)
+}

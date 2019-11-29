@@ -94,5 +94,8 @@ export const mutations = {
   [types.RESET_COUNTDOWN](state) {
       state.countdown.mm = '08';
       state.countdown.ss = '00';
-  }
+      document
+        .getElementById('countdown')
+        .className = 'col-md-6 alert-success'
+  },
 }

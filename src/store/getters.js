@@ -8,4 +8,3 @@ export const getDone = state => {
 export const getCountMinute = state => state.countdown.mm;
 export const getCountSecond = state => state.countdown.ss;
 export const getCountTimer = state => state.countdown.Timer;
-export const getCountA = state => state.countdown;
