@@ -11,18 +11,10 @@ export const state = {
 	  { key: 3, content: 'vue-resource 2.0', done: false },
 	  { key: 4, content: 'webpack', done: false }
   ],
-<<<<<<< HEAD
   countdown:{
     mm: '08',
     ss: '00',
     Timer: null,
-=======
-  countdown: {
-    idx: 1,
-    mm: '08',
-    ss: '00',
-    time: null,
->>>>>>> b3d935a3d567701eca7861e5f4a1b18758c18c57
   },
 }
 
@@ -70,37 +62,37 @@ export const mutations = {
       }
     }
   },
-[types.START_COUNTDOWN](state) {
-    let countdown = state.countdown;
-    if (countdown.ss == 0) {
-      countdown.mm = '0' + --countdown.mm;
-      countdown.ss = 59;
-    } else {
-      countdown.ss--;
-    }
-    if (+ countdown.ss < 10) {
-      countdown.ss = '0' + countdown.ss;
-    }
-    if (+ countdown.mm == 6 && + countdown.ss == 0) {
-      document
-        .getElementById('countdown')
-        .className = 'col-md-6 alert-warning';
-      document
-        .getElementById('audio')
-        .play();
-    }
-    if (+ countdown.mm == 0 && + countdown.ss == 0) {
-      document
-        .getElementById('countdown')
-        .className = 'col-md-6 alert-danger';
-      document
-        .getElementById('audio')
-        .play();
-      clearInterval(countdown.Timer);
-    }
-},
-[types.RESET_COUNTDOWN](state) {
-    state.countdown.mm = '08';
-    state.countdown.ss = '00';
-}
+  [types.START_COUNTDOWN](state) {
+      let countdown = state.countdown;
+      if (countdown.ss == 0) {
+        countdown.mm = '0' + --countdown.mm;
+        countdown.ss = 59;
+      } else {
+        countdown.ss--;
+      }
+      if (+ countdown.ss < 10) {
+        countdown.ss = '0' + countdown.ss;
+      }
+      if (+ countdown.mm == 6 && + countdown.ss == 0) {
+        document
+          .getElementById('countdown')
+          .className = 'col-md-6 alert-warning';
+        document
+          .getElementById('audio')
+          .play();
+      }
+      if (+ countdown.mm == 0 && + countdown.ss == 0) {
+        document
+          .getElementById('countdown')
+          .className = 'col-md-6 alert-danger';
+        document
+          .getElementById('audio')
+          .play();
+        clearInterval(countdown.Timer);
+      }
+  },
+  [types.RESET_COUNTDOWN](state) {
+      state.countdown.mm = '08';
+      state.countdown.ss = '00';
+  }
 }

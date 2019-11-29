@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
       <div id="countdown" class="col-md-6 alert-success">
-        {{ mm }} : {{ ss }}
+        {{ count.mm }} : {{ count.ss }}
       </div>
       <button class="col-md-3 btn btn-lg btn-outline-primary" @click="start()"> Start </button>
       <button class="col-md-3 btn btn-lg btn-outline-danger" @click="reset()"> Reset </button>
@@ -52,11 +52,10 @@ export default {
     playAudio() {
       document.getElementById('audio').play();
     },
-    ...mapActions([
-      'resetCountdown'
-    ]),
-    ...mapActions({startCountdown:'startCountdown',})
-  }
+    ...mapActions({
+      reset: 'resetCount',
+      start: 'startCount'
+    }),
 
 }
 
