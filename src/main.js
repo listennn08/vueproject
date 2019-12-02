@@ -72,7 +72,7 @@ const router = new VueRouter({
       component: Taiwan
     },
     // router 轉址
-    { path: '/*', redirect: '/hello' }
+    { path: '/*', redirect: '/' }
   ]
 });
 
