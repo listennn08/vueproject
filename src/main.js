@@ -67,7 +67,7 @@ const router = new VueRouter({
       component: CountDown
     },
     {
-      path: '/Taiwan',
+      path: '/',
       name: 'Taiwan',
       component: Taiwan
     },
