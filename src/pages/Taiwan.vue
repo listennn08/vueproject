@@ -9,20 +9,54 @@
       <div class="shop-list">
           <h1 class="mapH1"> {{ h1 }}</h1>
           <h2 class="mapH2"> {{ h2 }}</h2>
+          <div style="color: #FFF"> {{ whetherData }}</div>
       </div>
     </div>
   </div>
 </template>
 <script>
 import * as d3 from 'd3';
+import axios from 'axios';
 export default {
   data () {
     return {
       h1: '',
       h2: '',
+      whetherData: null,
     }
   },
   methods: {
+    formateTime (time) { console.log(time);return `${time.getFullYear()}-${(time.getMonth()+1) < 10 ? "0"+(time.getMonth()+1) : (time.getMonth()+1)}-${time.getDate() < 10 ? "0" + time.getDate() : time.getDate()}T${time.getHours()<10?"0"+time.getHours():time.getHours()}:${time.getMinutes() <10 ? "0" + time.getMinutes():time.getMinutes()}:${time.getSeconds()<10?"0" + time.getSeconds():time.getSeconds()}`},
+    getTime() {
+      /** 讓開始時間與結束時間相隔1小時 使用 arguments 做動態參數 */
+      if (arguments[0]) return encodeURI(`${this.formateTime(arguments[0])}`)
+      let n = new Date();
+      /** 天氣預報為 3 個小時測量一次 找出相隔最短之時間 */
+      let time = [];
+      let time3 = [0, 3, 6, 9, 12, 15, 18, 21];
+      for (let i=0; i<24; i+=3) {
+        time.push(Math.abs(n.getHours() - i));
+      }
+
+      let hours = (time3[time.indexOf(Math.min(...time))] < 10) ? `0${time3[time.indexOf(Math.min(...time))]}` : time3[time.indexOf(Math.min(...time))]; 
+      return encodeURI(`${n.getFullYear()}-${(n.getMonth()+1) < 10 ? "0"+(n.getMonth()+1) : (n.getMonth()+1)}-${n.getDate() < 10 ? "0" + n.getDate() : n.getDate()}T${hours}:00:00`)
+    },
+
+    async getWeather (location) {
+      let encodeLocation = encodeURI(location)
+      let author = "CWB-B064CB6C-3660-4D60-A4B8-0988834FD02E"
+      let nt = this.getTime();
+      let api = `https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-089?Authorization=${author}&locationName=${encodeLocation}&timeFrom=${nt}&timeTo=${this.getTime(new Date(nt).setHours(new Date(nt).getHours()+1))}`;
+      console.log(api)
+      this.whetherData = await axios.get(api)
+                                    .then(res => res.data)
+                                    .then(data => {
+                                      let weatherElement = data.records.locations[0].location[0].weatherElement;
+                                      console.log(weatherElement[2])
+                                      // return data.records.locations[0].location[0].weatherElement;
+                                    });
+    },
+
     async getTaiwanMap () {
       const width = (this.$refs.map.offsetWidth).toFixed(),
             height = (this.$refs.map.offsetHeight).toFixed();
@@ -59,19 +93,19 @@ export default {
                   .on('focus', (d) => {
                     this.h1 = d.properties.COUNTYNAME;
                     this.h2 = d.properties.COUNTYENG;
-                    console.log(d.properties.COUNTYCODE)
+                    console.log(d.properties.COUNTYCODE);
+                    this.getWeather(this.h1)
                     if (document.querySelector('.mapActive')) {
                       document.querySelector('.mapActive').classList.remove('mapActive');
                     }
-                    document.getElementById('city' + d.properties.COUNTYCODE).classList.add('mapActive')
+                    document.getElementById('city' + d.properties.COUNTYCODE).classList.add('mapActive');
                   })
               }, error => error)
     }
   },
   mounted() {
     this.getTaiwanMap()
-  }
-
+  },
 }
 </script>
 

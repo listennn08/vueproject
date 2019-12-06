@@ -54,4 +54,8 @@
     margin: 5px;
     padding: 2px;
   }
+  body {
+  letter-spacing: 1px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "微軟正黑體", "Microsoft JhengHei";
+}
 </style>

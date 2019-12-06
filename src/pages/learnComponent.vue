@@ -1,6 +1,7 @@
 <template>
   <div>
-    <navbar />
+    <titleText :text="title"/>
+    <!-- <navbar /> -->
     <container :list="list" />
     <!-- <jumbotron /> -->
   </div>
@@ -9,15 +10,18 @@
 import Navbar from '../components/Navbar.vue'
 //import NavBar from '../components/NavBar.vue'
 import Hello from './Hello.vue';
-import container from '../components/container.vue'
+import titleText from '../components/titleText.vue';
+import container from '../components/container.vue';
 export default {
   components: {
     Navbar,
     Hello,
     container,
+    titleText,
   },
   data () {
     return {
+      title: "DejaVu!",
       list: [
         {
           idx: 0,

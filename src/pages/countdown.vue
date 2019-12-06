@@ -14,7 +14,7 @@
   export default {
     data () {
       return {
-        timer: null
+        // timer: null
       }
     },
     computed: {
