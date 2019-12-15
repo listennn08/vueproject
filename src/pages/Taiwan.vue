@@ -26,7 +26,7 @@ export default {
     }
   },
   methods: {
-    formateTime (time) { console.log(time);return `${time.getFullYear()}-${(time.getMonth()+1) < 10 ? "0"+(time.getMonth()+1) : (time.getMonth()+1)}-${time.getDate() < 10 ? "0" + time.getDate() : time.getDate()}T${time.getHours()<10?"0"+time.getHours():time.getHours()}:${time.getMinutes() <10 ? "0" + time.getMinutes():time.getMinutes()}:${time.getSeconds()<10?"0" + time.getSeconds():time.getSeconds()}`},
+    formateTime (time) { return `${time.getFullYear()}-${(time.getMonth()+1) < 10 ? "0"+(time.getMonth()+1) : (time.getMonth()+1)}-${time.getDate() < 10 ? "0" + time.getDate() : time.getDate()}T${time.getHours()<10?"0"+time.getHours():time.getHours()}:${time.getMinutes() <10 ? "0" + time.getMinutes():time.getMinutes()}:${time.getSeconds()<10?"0" + time.getSeconds():time.getSeconds()}`},
     getTime() {
       /** 讓開始時間與結束時間相隔1小時 使用 arguments 做動態參數 */
       if (arguments[0]) return encodeURI(`${this.formateTime(arguments[0])}`)
@@ -46,13 +46,13 @@ export default {
       let encodeLocation = encodeURI(location)
       let author = "CWB-B064CB6C-3660-4D60-A4B8-0988834FD02E"
       let nt = this.getTime();
-      let api = `https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-089?Authorization=${author}&locationName=${encodeLocation}&timeFrom=${nt}&timeTo=${this.getTime(new Date(nt).setHours(new Date(nt).getHours()+1))}`;
+      let api = `https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-089?Authorization=${author}&locationName=${encodeLocation}&timeFrom=${nt}`//&timeTo=${this.getTime(new Date(new Date(nt).setHours(new Date(nt).getHours()+3)))}`;
       console.log(api)
       this.whetherData = await axios.get(api)
                                     .then(res => res.data)
                                     .then(data => {
                                       let weatherElement = data.records.locations[0].location[0].weatherElement;
-                                      console.log(weatherElement[2])
+                                      console.log(weatherElement[2].time[0])
                                       // return data.records.locations[0].location[0].weatherElement;
                                     });
     },
