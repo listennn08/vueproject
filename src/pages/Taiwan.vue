@@ -7,9 +7,9 @@
         </div>
       </div>
       <div class="shop-list">
-          <h1 class="mapH1"> {{ h1 }}</h1>
           <h2 class="mapH2"> {{ h2 }}</h2>
-          <div style="color: #FFF"> {{ whetherData }}</div>
+          <h3 class="mapH3"> {{ h3 }}</h3>
+          <div style="color: #FFF"> {{ AT }}</div>
       </div>
     </div>
   </div>
@@ -20,39 +20,47 @@ import axios from 'axios';
 export default {
   data () {
     return {
-      h1: '',
       h2: '',
-      whetherData: null,
+      h3: '',
+      AT: null,
     }
   },
   methods: {
-    formateTime (time) { return `${time.getFullYear()}-${(time.getMonth()+1) < 10 ? "0"+(time.getMonth()+1) : (time.getMonth()+1)}-${time.getDate() < 10 ? "0" + time.getDate() : time.getDate()}T${time.getHours()<10?"0"+time.getHours():time.getHours()}:${time.getMinutes() <10 ? "0" + time.getMinutes():time.getMinutes()}:${time.getSeconds()<10?"0" + time.getSeconds():time.getSeconds()}`},
+    formatTime (time) {
+      let MM = (time.getMonth()+1) < 10 ? `0${time.getMonth()+1}` : time.getMonth()+1
+      let dd = time.getDate() < 10 ? `0${time.getDate()}` : time.getDate()
+      let hh = time.getHours() < 10 ? `0${time.getHours()}` : time.getHours()
+      let mm = time.getMinutes() < 10 ? `0${time.getMinutes()}` : time.getMinutes()
+      let ss = time.getSeconds() < 10 ? `0${time.getSeconds()}` : time.getSeconds()
+      return `${time.getFullYear()}-${MM}-${dd}T${hh}:${mm}:${ss}`
+    },
     getTime() {
-      /** 讓開始時間與結束時間相隔1小時 使用 arguments 做動態參數 */
-      if (arguments[0]) return encodeURI(`${this.formateTime(arguments[0])}`)
       let n = new Date();
-      /** 天氣預報為 3 個小時測量一次 找出相隔最短之時間 */
+      /** 天氣預報為 3 個小時測量一次 找出時間區間 */
       let time = [];
-      let time3 = [0, 3, 6, 9, 12, 15, 18, 21];
-      for (let i=0; i<24; i+=3) {
-        time.push(Math.abs(n.getHours() - i));
+      let time3 = [0, 3, 6, 9, 12, 15, 18, 21, 24];
+      for (let i = 0; i < time3.length; i++) {
+        if (n.getHours() > time3[i] && n.getHours() < time3[i+1]){
+          time = [time3[i], time3[i+1]];
+          break;
+        }
       }
-
-      let hours = (time3[time.indexOf(Math.min(...time))] < 10) ? `0${time3[time.indexOf(Math.min(...time))]}` : time3[time.indexOf(Math.min(...time))]; 
-      return encodeURI(`${n.getFullYear()}-${(n.getMonth()+1) < 10 ? "0"+(n.getMonth()+1) : (n.getMonth()+1)}-${n.getDate() < 10 ? "0" + n.getDate() : n.getDate()}T${hours}:00:00`)
+      let hours = time.map( (el) => el < 10 ? `0${el}`: el)
+      return hours.map( (el) => encodeURI(`${n.getFullYear()}-${(n.getMonth()+1) < 10 ? "0"+(n.getMonth()+1) : (n.getMonth()+1)}-${n.getDate() < 10 ? "0" + n.getDate() : n.getDate()}T${el}:00:00`))
     },
 
     async getWeather (location) {
       let encodeLocation = encodeURI(location)
       let author = "CWB-B064CB6C-3660-4D60-A4B8-0988834FD02E"
       let nt = this.getTime();
-      let api = `https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-089?Authorization=${author}&locationName=${encodeLocation}&timeFrom=${nt}`//&timeTo=${this.getTime(new Date(new Date(nt).setHours(new Date(nt).getHours()+3)))}`;
+      console.log(nt)
+      let api = `https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-089?Authorization=${author}&locationName=${encodeLocation}&timeFrom=${nt[0]}&timeTo=${nt[1]}`;
       console.log(api)
       this.whetherData = await axios.get(api)
                                     .then(res => res.data)
                                     .then(data => {
                                       let weatherElement = data.records.locations[0].location[0].weatherElement;
-                                      console.log(weatherElement[2].time[0])
+                                      this.AT = `體感溫度 ${weatherElement[2].time[0].elementValue[0].value}℃`
                                       // return data.records.locations[0].location[0].weatherElement;
                                     });
     },
@@ -91,10 +99,10 @@ export default {
                   .attr('d', path)
                   .attr('id', d => 'city' + d.properties.COUNTYCODE)
                   .on('focus', (d) => {
-                    this.h1 = d.properties.COUNTYNAME;
-                    this.h2 = d.properties.COUNTYENG;
+                    this.h2 = d.properties.COUNTYNAME;
+                    this.h3 = d.properties.COUNTYENG;
                     console.log(d.properties.COUNTYCODE);
-                    this.getWeather(this.h1)
+                    this.getWeather(this.h2)
                     if (document.querySelector('.mapActive')) {
                       document.querySelector('.mapActive').classList.remove('mapActive');
                     }
@@ -161,19 +169,19 @@ body {
   transform: translateY(-5px);
 }
 
-.mapH1, .mapH2 {
+.mapH2, .mapH3 {
   position: relative;
-  line-height: 2;
+  line-height: 1;
   text-align: center;
   font-weight: bold;
 }
 
-.mapH1 {
+.mapH2 {
   font-size: 5vw;
   color: #ffca28;
 }
 
-.mapH1::after {
+.mapH3::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -184,7 +192,7 @@ body {
   transform: translateX(-50%);
 }
 
-.mapH2 {
+.mapH3 {
   font-size: 4vw;
   color: rgba(255, 255, 255, 0.8);
 }
@@ -196,7 +204,7 @@ body {
   align-content: center;
   flex-wrap: wrap;
 }
-.shop-list h1, .shop-list h2 {
+.shop-list h2, .shop-list h3 {
   width: 100%;
 }
 
