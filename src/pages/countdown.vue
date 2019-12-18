@@ -3,8 +3,8 @@
       <div id="countdown" class="col-md-6 alert-success">
         {{ mm }} : {{ ss }}
       </div>
-      <button class="col-md-3 btn btn-lg btn-outline-primary" @click="timer(setInterval(start, 1000))"> Start </button>
-      <button class="col-md-3 btn btn-lg btn-outline-danger" @click="reset()"> Reset </button>
+      <button class="col-md-3 btn btn-lg btn-outline-primary" @click="getStart()"> Start </button>
+      <button class="col-md-3 btn btn-lg btn-outline-danger" @click="resetCount()"> Reset </button>
 
       <audio id="audio" src="../static/bell.wav"></audio>
   </div>
@@ -14,7 +14,7 @@
   export default {
     data () {
       return {
-        // timer: null
+        timer: null,
       }
     },
     computed: {
@@ -28,9 +28,18 @@
       ...mapActions({
         reset: 'resetCount',
         start: 'startCount',
-        timer: 'updateTimer',
-      })
-
+      }),
+      getStart () {
+        this.timer = setInterval( ()=> {
+          let count = document.getElementById('countdown').innerHTML.trim();
+          if (count == "00 : 01") clearInterval(this.timer)
+          this.start()
+        },1000)
+      },
+      resetCount () {
+        clearInterval(this.timer);
+        this.reset();
+      }
     }
   }
 
