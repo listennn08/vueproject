@@ -20,13 +20,13 @@ import Taiwan from './pages/Taiwan.vue'
 import store from './store'
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import { library } from  '@fortawesome/fontawesome-svg-core'
-import { faCoffee, faPlus, faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons'
+import { faCoffee, faPlus, faTrash, faPencilAlt, faCloudRain } from '@fortawesome/free-solid-svg-icons'
 // import { faGooglePlus } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 // import 'bootstrap/dist/js/bootstrap.js';
 
-library.add(faCoffee, faPlus, faTrash, faPencilAlt);
+library.add(faCoffee, faPlus, faTrash, faPencilAlt, faCloudRain);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 const router = new VueRouter({

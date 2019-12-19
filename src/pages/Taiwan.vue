@@ -10,6 +10,7 @@
           <h2 class="mapH2"> {{ h2 }}</h2>
           <h3 class="mapH3"> {{ h3 }}</h3>
           <div style="color: #FFF"> {{ AT }}</div>
+          <div style="color: #FFF"><!--<font-awesome-icon icon="cloud-rain"></font-awesome-icon>--> {{ PoP }}</div>
       </div>
     </div>
   </div>
@@ -22,7 +23,8 @@ export default {
     return {
       h2: '',
       h3: '',
-      AT: null,
+      AT: null, //體感溫度
+      PoP: null, //降雨機率
     }
   },
   methods: {
@@ -48,19 +50,47 @@ export default {
       let hours = time.map( (el) => el < 10 ? `0${el}`: el)
       return hours.map( (el) => encodeURI(`${n.getFullYear()}-${(n.getMonth()+1) < 10 ? "0"+(n.getMonth()+1) : (n.getMonth()+1)}-${n.getDate() < 10 ? "0" + n.getDate() : n.getDate()}T${el}:00:00`))
     },
-
+    checkKey (obj, key) {
+      try {
+          _checkKey(obj);
+      } catch (e) {
+          return false;
+      }
+      return true;
+      function _checkKey (obj) {
+          if (typeof obj === 'undefined') throw new Error('undefined');
+          if (key.length > 0) {
+              _checkKey(obj[key.shift()]);
+          }
+      }
+    },
+    getNowWeatherData (weatherData) {
+      if (arguments[1]){
+        let startTime = arguments[1][0].split('T').join(' ');
+        let endTime = arguments[1][1].split('T').join(' ');
+      }
+      for (let weather of weatherData.time) {
+        if(~Object.keys(weather).indexOf("dateTime")) {
+          console.log("1")
+        } else {
+          console.log(Object.keys(weather).indexOf("dateTime"))
+        }
+      }
+    },
     async getWeather (location) {
       let encodeLocation = encodeURI(location)
       let author = "CWB-B064CB6C-3660-4D60-A4B8-0988834FD02E"
       let nt = this.getTime();
-      console.log(nt)
-      let api = `https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-089?Authorization=${author}&locationName=${encodeLocation}&timeFrom=${nt[0]}&timeTo=${nt[1]}`;
-      console.log(api)
+      // console.log(nt)
+      let api = `https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-089?Authorization=${author}&locationName=${encodeLocation}` //&timeFrom=${nt[0]}&timeTo=${nt[1]}`;
+      // console.log(api)
       this.whetherData = await axios.get(api)
                                     .then(res => res.data)
                                     .then(data => {
                                       let weatherElement = data.records.locations[0].location[0].weatherElement;
-                                      this.AT = `體感溫度 ${weatherElement[2].time[0].elementValue[0].value}℃`
+                                      console.log(weatherElement);
+                                      this.PoP = `降雨機率 ${weatherElement[0].time[0].elementValue[0].value}%`;
+                                      this.AT = `體感溫度 ${weatherElement[2].time[0].elementValue[0].value}℃`;
                                       // return data.records.locations[0].location[0].weatherElement;
                                     });
     },
@@ -101,7 +131,7 @@ export default {
                   .on('focus', (d) => {
                     this.h2 = d.properties.COUNTYNAME;
                     this.h3 = d.properties.COUNTYENG;
-                    console.log(d.properties.COUNTYCODE);
+                    // console.log(d.properties.COUNTYCODE);
                     this.getWeather(this.h2)
                     if (document.querySelector('.mapActive')) {
                       document.querySelector('.mapActive').classList.remove('mapActive');
