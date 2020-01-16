@@ -31,7 +31,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 const router = new VueRouter({
   // 使用 HTML 5 模式
-  // mode: 'history',
+  mode: 'history',
   base: __dirname,
   // routre 表
   routes: [
