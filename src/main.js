@@ -17,6 +17,9 @@ import Count from './pages/count.vue'
 import Todo from './pages/todo.vue'
 import CountDown from './pages/countdown.vue'
 import Taiwan from './pages/Taiwan.vue'
+import UnloadPage from './pages/UnloadPage.vue'
+import Convert from './pages/Convert.vue'
+
 import store from './store'
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import { library } from  '@fortawesome/fontawesome-svg-core'
@@ -31,7 +34,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 const router = new VueRouter({
   // 使用 HTML 5 模式
-  // mode: 'history',
+  mode: 'history',
   base: __dirname,
   // routre 表
   routes: [
@@ -71,8 +74,18 @@ const router = new VueRouter({
       name: 'Taiwan',
       component: Taiwan
     },
+    {
+      path: '/convert',
+      name: 'convert',
+      component: Convert
+    },
+    {
+      path: '/UnloadPage',
+      name: 'UnloadPage',
+      component: UnloadPage
+    },
     // router 轉址
-    { path: '/*', redirect: '/' }
+    { path: '/*', redirect: '/Hello' }
   ]
 });
 

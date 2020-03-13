@@ -17,26 +17,32 @@
     <a href="#" class="navbar-brand">Matt</a>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <router-link :to="{path: '/hello'}">Hello</router-link>
+          <router-link :to="{path: '/hello'}">首頁</router-link>
         </li>
         <li class="nav-item active">
-          <router-link :to="{name: 'c2f'}">CtoF</router-link>
+          <router-link :to="{name: 'c2f'}">溫度轉換</router-link>
         </li>
         <li class="nav-item active">
           <router-link :to="{name: 'learnComponent'}" >Component</router-link>
         </li>
         <li class="nav-item active">
-          <router-link :to="{name: 'count'}">Count</router-link>
+          <router-link :to="{name: 'count'}">計數器</router-link>
         </li>
         <li class="nav-item active">
-          <router-link :to="{name: 'todo'}">Todo</router-link>
+          <router-link :to="{name: 'todo'}">TodoList</router-link>
         </li>
         <li class="nav-item active">
-          <router-link :to="{name: 'countdown'}">CountDown</router-link>
+          <router-link :to="{name: 'countdown'}">倒數計時器</router-link>
         </li>
         <li class="nav-item active">
-          <router-link :to="{name: 'Taiwan'}">Taiwan</router-link>
+          <router-link :to="{name: 'convert'}">大寫金額轉換</router-link>
         </li>
+        <li class="nav-item active">
+          <router-link :to="{name: 'Taiwan'}">天氣地圖</router-link>
+        </li>
+        <!--<li class="nav-item active">
+          <router-link :to="{name: 'UnloadPage'}">UnloadPage</router-link>
+        </li>-->
       </ul>
     </nav>
 
