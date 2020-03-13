@@ -85,7 +85,7 @@ const router = new VueRouter({
       component: UnloadPage
     },
     // router 轉址
-    { path: '/*', redirect: '/Hello' }
+    { path: '/*', redirect: '/Taiwan' }
   ]
 });
 
