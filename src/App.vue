@@ -41,6 +41,9 @@
           <router-link :to="{name: 'convert'}">大寫金額轉換</router-link>
         </li>
         <li class="nav-item active">
+          <router-link :to="{name: 'rateConvert'}">匯率試算</router-link>
+        </li>
+        <li class="nav-item active">
           <router-link :to="{name: 'Taiwan'}">天氣地圖</router-link>
         </li>
         <!--<li class="nav-item active">
