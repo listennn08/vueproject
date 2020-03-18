@@ -29,6 +29,9 @@
           <router-link :to="{name: 'count'}">計數器</router-link>
         </li>
         <li class="nav-item active">
+          <router-link :to="{name: 'calculator'}">計算機</router-link>
+        </li>
+        <li class="nav-item active">
           <router-link :to="{name: 'todo'}">TodoList</router-link>
         </li>
         <li class="nav-item active">

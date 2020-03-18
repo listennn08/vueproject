@@ -19,6 +19,7 @@ import CountDown from './pages/countdown.vue'
 import Taiwan from './pages/Taiwan.vue'
 import UnloadPage from './pages/UnloadPage.vue'
 import Convert from './pages/Convert.vue'
+import Calculator from './pages/Calculator.vue'
 
 import store from './store'
 // import 'bootstrap/dist/css/bootstrap.min.css'
@@ -78,6 +79,11 @@ const router = new VueRouter({
       path: '/convert',
       name: 'convert',
       component: Convert
+    },
+    {
+      path: '/calculator',
+      name: 'calculator',
+      component: Calculator
     },
     {
       path: '/UnloadPage',
