@@ -6,7 +6,7 @@
       <button class="col-md-3 btn btn-lg btn-outline-primary" @click="getStart()"> Start </button>
       <button class="col-md-3 btn btn-lg btn-outline-danger" @click="resetCount()"> Reset </button>
 
-      <audio id="audio" src="../static/bell.wav"></audio>
+      <audio id="audio" src="/vueproject/static/bell.wav"></audio>
   </div>
 </template>
 <script>
