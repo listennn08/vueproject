@@ -17,6 +17,11 @@ import Count from './pages/count.vue'
 import Todo from './pages/todo.vue'
 import CountDown from './pages/countdown.vue'
 import Taiwan from './pages/Taiwan.vue'
+// import UnloadPage from './pages/UnloadPage.vue'
+import Convert from './pages/Convert.vue'
+import Calculator from './pages/Calculator.vue'
+import rateConvert from './pages/rateConvert.vue'
+
 import store from './store'
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import { library } from  '@fortawesome/fontawesome-svg-core'
@@ -70,6 +75,26 @@ const router = new VueRouter({
       path: '/Taiwan',
       name: 'Taiwan',
       component: Taiwan
+    },
+    {
+      path: '/convert',
+      name: 'convert',
+      component: Convert
+    },
+    {
+      path: '/calculator',
+      name: 'calculator',
+      component: Calculator
+    },
+    // {
+    //   path: '/UnloadPage',
+    //   name: 'UnloadPage',
+    //   component: UnloadPage
+    // },
+    {
+      path: '/rateConvert',
+      name: 'rateConvert',
+      component: rateConvert
     },
     // router 轉址
     { path: '/*', redirect: '/Taiwan' }
