@@ -7,7 +7,7 @@
                     <select id="From" class="custom-select" @change="changeCurrency()">
                         <option :value="item.CurrencyCode" v-for="(item, index) in options" :key="index">{{ item.CurrencyCnName }}</option>
                     </select>
-                    <button id="changebtn" class="btn btn-outline-success offset-5">↑↓</button>
+                    <button id="changebtn" class="btn btn-outline-success offset-5" @click="changeSelect()">↑↓</button>
                     <select id="To" class="custom-select" @change="changeCurrency()">
                         <option :value="item.CurrencyCode" v-for="(item, index) in options" :key="index">{{ item.CurrencyCnName }}</option>
                     </select>
@@ -75,6 +75,12 @@ export default {
                 .then( response => response.data)
                 .then( data => data[from+to].Exrate)
                 .then(exrate=> exrate)
+        },
+        changeSelect () {
+          let tmp = document.getElementById('From').selectedIndex;
+          document.getElementById('From').options[document.getElementById('To').selectedIndex].selected = true;
+          document.getElementById('To').options[tmp].selected = true;
+          this.changeCurrency();
         }
     }
 }
