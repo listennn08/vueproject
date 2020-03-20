@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="col-md-6 offset-md-3 mt-5">
         <h1>{{ title }}</h1>
         <div class="res">
             {{ disp }}
@@ -99,7 +99,7 @@ export default {
              this.disp += v;
           }
         }
-         
+
       } else {
         switch (v) {
           case 'back':
@@ -141,7 +141,7 @@ export default {
           if (this.tmpEql == '') {
             this.tmpEql = '=';
             this.usrInput = this.disp;
-          } 
+          }
           this.sum = this.comp(this.sum, this.Ope, this.usrInput);
           this.disp = this.sum.toString();
       }
@@ -159,7 +159,7 @@ export default {
         case '/':
           return sum / +(cur);
       }
-      
+
     },
     reset () {
       this.Ope = this.tmpOpe = this.tmpEql = '';
@@ -175,7 +175,7 @@ export default {
   display:none;
 }
 #app {
-  text-align: center; 
+  text-align: center;
 }
 .container {
 /*   height: 20%;
@@ -190,8 +190,8 @@ export default {
   font-size: 36px;
   font-weight: bold;
   color: red;
-  text-align: right; 
-  padding: 5px; 
+  text-align: right;
+  padding: 5px;
   margin: 2px;
 }
 #userIn {
