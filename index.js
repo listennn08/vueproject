@@ -9,13 +9,13 @@ import count from './modules/count';
 Vue.use( Vuex );
 
 export default new Vuex.Store({
-  // root
-  getters,
-  // 將整理好的 modules 放到 vuex 中組合
-  modules: {
-    count,
-    // todo
-  },
-  // 嚴格模式，禁止直接修改state
-  strict: true
+    // root
+    getters,
+    // 將整理好的 modules 放到 vuex 中組合
+    modules: {
+        count,
+        // todo
+    },
+    // 嚴格模式，禁止直接修改state
+    strict: true
 });
