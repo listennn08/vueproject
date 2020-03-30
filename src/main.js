@@ -24,65 +24,7 @@ import 'bootstrap/dist/js/bootstrap.js';
 library.add(faCoffee, faPlus, faTrash, faPencilAlt, faCloudRain, faBars);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
-// const router = new VueRouter({
-//     // 使用 HTML 5 模式
-//     mode: 'history',
-//     base: __dirname,
-//     // routre 表
-//     routes: [
-//         {
-//             path: '/hello',
-//             name: 'hello',
-//             component: Hello
-//         }, {
-//             path: '/c2f',
-//             name: 'c2f',
-//             component: CtoF
-//         }, {
-//             path: '/learnComponent',
-//             name: 'learnComponent',
-//             component: learnComponent,
-//             meta: {
-//                 requireAuth: true
-//             }
-//         }, {
-//             path: '/count',
-//             name: 'count',
-//             component: Count
-//         }, {
-//             path: '/todo',
-//             name: 'todo',
-//             component: Todo
-//         }, {
-//             path: '/countdown',
-//             name: 'countdown',
-//             component: CountDown
-//         }, {
-//             path: '/Taiwan',
-//             name: 'Taiwan',
-//             component: Taiwan
-//         }, {
-//             path: '/convert',
-//             name: 'convert',
-//             component: Convert
-//         }, {
-//             path: '/calculator',
-//             name: 'calculator',
-//             component: Calculator
-//         },
-//         // {   path: '/UnloadPage',   name: 'UnloadPage',   component: UnloadPage },
-//         {
-//             path: '/rateConvert',
-//             name: 'rateConvert',
-//             component: rateConvert
-//         },
-//         // router 轉址
-//         {
-//             path: '/',
-//             redirect: '/Taiwan'
-//         }
-//     ]
-// });
+
 
 new Vue({
     el: '#app',

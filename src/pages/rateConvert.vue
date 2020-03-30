@@ -58,7 +58,7 @@
         },
         created() {
             axios
-                .get('../static/currencies.json') //.get('/vueproject/static/currencies.json')
+                .get('/vueproject/static/currencies.json') //.get('/vueproject/static/currencies.json')
                 .then(async response => this.options = await response.data)
         },
         watch: {
