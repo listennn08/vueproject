@@ -1,6 +1,6 @@
 <template>
 
-    <div class="container">
+    <div>
         <!--
             router-link 就像
             <a href="/c2f">CtoF</a>
