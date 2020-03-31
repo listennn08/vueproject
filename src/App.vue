@@ -17,7 +17,7 @@
             <a href="#" class="navbar-brand">Matt</a>
             <ul id="expandNav" class="navbar-nav mr-2">
                 <li class="nav-item active">
-                    <router-link :to="{path: '/hello'}">首頁</router-link>
+                    <router-link :to="{name: 'hello'}">首頁</router-link>
                 </li>
                 <li class="nav-item active">
                     <router-link :to="{name: 'c2f'}">溫度轉換</router-link>
@@ -76,7 +76,6 @@
     @import '~bootstrap/scss/bootstrap.scss';
 </style>
 <style>
-
     nav ul li {
         display: inline;
         margin: 5px;

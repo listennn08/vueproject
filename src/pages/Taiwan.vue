@@ -179,7 +179,7 @@
                     .attr('width', width)
                     .attr('height', height * 2)
                     .attr('viewBox', `0 0 ${width} ${height}`)
-                var url = '/vueporject/static/COUNTY_MOI_1080726.json'
+                var url = '/vueproject/static/COUNTY_MOI_1080726.json'
                 await d3
                     .json(url)
                     .then((geometry) => {
