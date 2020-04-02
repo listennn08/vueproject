@@ -58,23 +58,10 @@
                 let n = new Date();
                 /** 天氣預報為 3 個小時測量一次 找出時間區間 */
                 let time = [];
-                let time3 = [
-                    0,
-                    3,
-                    6,
-                    9,
-                    12,
-                    15,
-                    18,
-                    21,
-                    24
-                ];
+                let time3 = [0, 3, 6, 9, 12, 15, 18, 21, 24];
                 for (let i = 0; i < time3.length; i++) {
                     if (n.getHours() > time3[i] && n.getHours() < time3[i + 1]) {
-                        time = [
-                            time3[i],
-                            time3[i + 1]
-                        ];
+                        time = [time3[i], time3[i + 1]];
                         break;
                     }
                 }
@@ -118,7 +105,7 @@
                         .join(' ');
                 }
                 for (let weather of weatherData.time) {
-                    if (~ Object.keys(weather).indexOf("dateTime")) {
+                    if (~Object.keys(weather).indexOf("dateTime")) {
                         console.log("1")
                     } else {
                         console.log(Object.keys(weather).indexOf("dateTime"))
@@ -171,7 +158,7 @@
                 let path = await d3
                     .geoPath()
                     .projection(d3.geoMercator().center([121, 24]).scale(mercatorScale).translate([
-                        width / 2.5,
+                        width / 2.25,
                         height / 2.5
                     ]));
                 var svg = await d3
@@ -179,7 +166,8 @@
                     .attr('width', width)
                     .attr('height', height * 2)
                     .attr('viewBox', `0 0 ${width} ${height}`)
-                var url = '/vueproject/static/COUNTY_MOI_1080726.json'
+                // var url = '/vueproject/static/COUNTY_MOI_1080726.json'
+                var url = '../static/COUNTY_MOI_1080726.json'
                 await d3
                     .json(url)
                     .then((geometry) => {
@@ -322,11 +310,13 @@
         }
 
         .taiwan-map {
-            height: 80vh;
+            height: 60vh;
         }
 
         .shop-list {
-            height: 20vh;
+            height: 40vh;
+            position: fixed;
+            bottom: 50px;
         }
 
         .mapH1 {

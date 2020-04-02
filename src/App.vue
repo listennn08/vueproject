@@ -1,5 +1,4 @@
 <template>
-
     <div>
         <!--
             router-link 就像
@@ -50,7 +49,7 @@
                     <router-link :to="{name: 'UnloadPage'}">UnloadPage</router-link>
                 </li>-->
             </ul>
-            <ul id="dropdownNav" class="nav nav-pills">
+            <ul id="dropdownNav" class="nav nav-pills sticky-top">
                 <li class="nav-item dropdown">
                     <button class="btn btn-outline-success dropdown-toggle" data-toggle="dropdown"><font-awesome-icon icon="bars"/></button>
                     <div class="dropdown-menu dropdown-menu-right text-center">
@@ -68,14 +67,16 @@
         </nav>
 
         <!-- 轉跳後所載入的 component 最後會顯示在此 -->
-        <router-view></router-view>
-
+        <router-view/>
     </div>
 </template>
 <style lang="scss">
     @import '~bootstrap/scss/bootstrap.scss';
 </style>
 <style>
+    nav {
+        z-index: 999;
+    }
     nav ul li {
         display: inline;
         margin: 5px;
