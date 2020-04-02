@@ -1,6 +1,6 @@
 <template>
 
-    <div class="container">
+    <div>
         <!--
             router-link 就像
             <a href="/c2f">CtoF</a>
@@ -52,7 +52,7 @@
             </ul>
             <ul id="dropdownNav" class="nav nav-pills">
                 <li class="nav-item dropdown">
-                    <button class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"><font-awesome-icon icon="bars"/></button>
+                    <button class="btn btn-outline-success dropdown-toggle" data-toggle="dropdown"><font-awesome-icon icon="bars"/></button>
                     <div class="dropdown-menu dropdown-menu-right text-center">
                         <router-link class="dropdown-item" :to="{name: 'c2f'}">溫度轉換</router-link>
                         <router-link class="dropdown-item" :to="{name: 'learnComponent'}">Component</router-link>
