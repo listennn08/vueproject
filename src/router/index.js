@@ -22,7 +22,7 @@ export default new Router({
     base: __dirname,
     routes: [
         {
-            path: __dirname +'/hello',
+            path: '/hello',
             name: 'hello',
             component: Hello
         }, {

@@ -1,12 +1,16 @@
 <template>
-    <div class="col-md-3 mt-5 offset-md-4 border">
-        <h1 class="offset-md-2">{{ title }}</h1>
-        <div class="row res ">
-            <div class="col-md-1">
-                {{ Ope }}
+    <div id="main" class="col-md-3 mt-5 offset-md-4 border">
+        <h1>{{ title }}</h1>
+        <div class="row res col-md-10">
+            <div class="col-md-1 lead resChild">
+                <!-- <span class="lead"> -->
+                    {{ Ope }}
+                <!-- </span> -->
             </div>
-            <div class="col">
-                {{ disp }}
+            <div class="col lead resChild">
+                <!-- <span class="lead"> -->
+                    {{ disp }}
+                <!-- </span> -->
             </div>
         </div>
 
@@ -166,6 +170,17 @@
                 ]
             }
         },
+        created () {
+            let self = this;
+            window.addEventListener("keydown", function (e) {
+                e.preventDefault;
+                if(e.keyCode == 13) {
+                    console.log(e.keyCode)
+                    console.log("this is keyCode")
+                    self.operate("eql");
+                }
+            })
+        },
         computed () {
             this.usrInput
         },
@@ -267,16 +282,23 @@
     #app {
         text-align: center;
     }
-
+    #main {
+        text-align: center;
+    }
     .res {
+        position: relative;
+        left: 7%;
         border: 1px solid black;
-        height: 50px;
+        height: 30px;
         font-size: 36px;
         font-weight: bold;
         color: red;
         text-align: right;
         padding: 5px;
         margin: 2px;
+    }
+    .resChild {
+        height: 20px;
     }
     #userIn {
         width: 30px;

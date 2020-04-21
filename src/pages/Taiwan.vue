@@ -31,9 +31,21 @@
             return {
                 h2: '',
                 h3: '',
-                AT: null, //體感溫度
-                PoP: null, //降雨機率
+                AT: null,   //體感溫度
+                PoP: null,  //降雨機率
+                Wx: null,   // 天氣現象 每小時
+                T: null,    // 溫度  24
+                RH: null,   //相對濕度  24
+                CI: null,   //舒適度指數  24
+                WeatherDescription: null,   //天氣預報綜合描述  24
+                PoP6h: null,    //6小時降雨機率 12
+                WS: null,   //風速  24
+                WD: null,   //風向  24
+                Td: null,   //露點溫度 24
             }
+        },
+        watch: {
+
         },
         methods: {
             formatTime (time) {
@@ -149,9 +161,9 @@
 
                 if (w > 1366) {
                     mercatorScale = 8000;
-                } else if (w <= 1366 && w > 480) {
+                } else if (w <= 1366 && w > 960) {
                     mercatorScale = 5000;
-                } else {
+                } else if (w < 480) {
                     mercatorScale = 2000;
                 }
 
@@ -304,12 +316,12 @@
             flex-wrap: wrap;
         }
 
-        .shop-list,
-        .taiwan-map {
+        .shop-list {
             width: 100%;
         }
 
         .taiwan-map {
+            width: 100%;
             height: 60vh;
         }
 
